@@ -5,10 +5,10 @@ class Chirp extends Component {
     return (
       <React.Fragment>
         <div className="card mt-3" style={{ width: "18rem" }}>
-          <h4 className="chirpheader text-center card-header p-0">
+          <h4 className="chirpheader text-center card-header p-0 bg-info text-white">
             {`${this.props.name}`}
           </h4>
-          <p className="chirpbody text-center card-body ">
+          <p className="chirpbody text-center card-body text-secondary">
             {`${this.props.placeholder}`}
           </p>
         </div>

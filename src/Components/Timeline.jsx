@@ -8,25 +8,29 @@ class Timeline extends Component {
     this.state = {
       name: "What's my name?",
       placeholder: "I'm holding this spot.",
-      chirper: [],
+      chirper: [<Chirp name="Karen" placeholder="I love cats!" />, <Chirp name="Linda" placeholder= "I love tapioca!" />, <Chirp name="Debbie" placeholder= "Do not disturb me." />],
       namevalue: "",
-      textvalue: ""
+      textvalue: "",
     };
   }
 
   handleClick = e => {
-    console.log(e);
+    //console.log(e);
     e.preventDefault();
-    this.setState({
-      chirper: [
-        ...this.state.chirper,
-        <Chirp
-          key={this.state.chirper.length}
-          name={this.state.namevalue}
-          placeholder={this.state.textvalue}
-        />
-      ]
-    });
+    if (this.state.namevalue !== "" && this.state.textvalue !== "") {
+      this.setState({
+        chirper: [
+          ...this.state.chirper,
+          <Chirp
+            key={this.state.chirper.length}
+            name={this.state.namevalue}
+            placeholder={this.state.textvalue}
+          />
+        ]
+      });
+      this.setState({ namevalue: "" });
+      this.setState({ textvalue: "" });
+    }
   };
 
   handleChange = (e, id) => {
@@ -41,7 +45,9 @@ class Timeline extends Component {
     return (
       <React.Fragment>
         <div className="bg-info">
-          <h1 className="timeline-header text-center p-4 text-white">CHIRRRRRP!</h1>
+          <h1 className="timeline-header text-center p-4 text-white">
+            CHIRRRRRP!
+          </h1>
         </div>
         <form className="main-form mt-5">
           <div className="group1 form-group d-flex container-xl justify-content-center">
@@ -62,7 +68,7 @@ class Timeline extends Component {
               onChange={e => this.handleChange(e.target.value, "text_input")}
             />
             <button
-              className="chirp-button btn btn-primary rounded"
+              className="chirp-button btn btn-danger rounded"
               onClick={e => this.handleClick(e)}
             >
               Call Me Button
@@ -72,7 +78,9 @@ class Timeline extends Component {
         <Chirp /> */}
         </form>
         <div className="d-flex justify-content-center ">
-          <div className="flex-column">{this.state.chirper}</div>
+          <div className="flex-column">
+            {this.state.chirper}
+          </div>
         </div>
       </React.Fragment>
     );
