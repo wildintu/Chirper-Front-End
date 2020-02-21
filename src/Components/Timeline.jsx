@@ -8,14 +8,13 @@ class Timeline extends Component {
     this.state = {
       name: "What's my name?",
       placeholder: "I'm holding this spot.",
-      chirper: [<Chirp name="Karen" placeholder="I love cats!" />, <Chirp name="Linda" placeholder= "I love tapioca!" />, <Chirp name="Debbie" placeholder= "Do not disturb me." />],
+      chirper: [<Chirp key={0} name="Karen" placeholder="I love cats!" />, <Chirp key={1} name="Linda" placeholder= "I love tapioca!" />, <Chirp key={2} name="Debbie" placeholder= "Do not disturb me." />],
       namevalue: "",
       textvalue: "",
     };
   }
 
   handleClick = e => {
-    //console.log(e);
     e.preventDefault();
     if (this.state.namevalue !== "" && this.state.textvalue !== "") {
       this.setState({
